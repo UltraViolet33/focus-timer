@@ -11,7 +11,6 @@ import { Timing } from "./Timing";
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(0);
-
   const [minutes, setMinutes] = useState(12);
 
   const onProgress = (progress) => {

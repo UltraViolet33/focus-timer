@@ -14,11 +14,13 @@ export const Focus = ({ addSubject }) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>What would you like to focus on ?</Text>
         <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            onChangeText={setTmpItem}
+          <TextInput style={styles.input} onChangeText={setTmpItem} />
+          <RoundedButton
+            size={50}
+            title="+"
+            focusItem={tmpItem}
+            onpress={addSubject}
           />
-          <RoundedButton size={50} title="+" focusItem={tmpItem} onpress={addSubject} />
         </View>
       </View>
     </View>
