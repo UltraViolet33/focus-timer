@@ -6,12 +6,12 @@ export const RoundedButton = ({
   size = 125,
   style = {},
   textStyle = {},
-  focusItem,
+  focusItem = "",
   title,
-  setFocus
+  onpress,
 }) => {
   return (
-    <TouchableOpacity style={[styles(size).radius, style]} onPress={()=>setFocus(focusItem)}  >
+    <TouchableOpacity style={[styles(size).radius, style]} onPress={()=>onpress(focusItem)}  >
       <Text style={[styles(size).text , textStyle]}>{title}</Text>
     </TouchableOpacity>
   );

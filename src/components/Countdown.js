@@ -26,9 +26,12 @@ export const Countdown = ({ minutes = 1, isPaused }) => {
   };
 
   useEffect(() => {
+    if (isPaused) {
+      return;
+    }
     interval.current = setInterval(countdown, 1000);
     return () => clearInterval(interval.current);
-  });
+  }, [isPaused]);
   return (
     <Text style={styles.text}>
       {formatTime(minutesLeft)}: {formatTime(secondsLeft)}

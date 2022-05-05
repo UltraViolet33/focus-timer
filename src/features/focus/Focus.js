@@ -18,7 +18,7 @@ export const Focus = ({ addSubject }) => {
             style={styles.input}
             onChangeText={setTmpItem}
           />
-          <RoundedButton size={50} title="+" focusItem={tmpItem} setFocus={addSubject} />
+          <RoundedButton size={50} title="+" focusItem={tmpItem} onpress={addSubject} />
         </View>
       </View>
     </View>
