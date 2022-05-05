@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { fontSizes, spacing } from "../utils/sizes";
 import { colors } from "../utils/colors";
 
 const minutesToMilli = (min) => min * 1000 * 60;
-
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-export const Countdown = ({ minutes = 1, isPaused }) => {
+export const Countdown = ({ minutes = 1, isPaused, onProgress }) => {
   const interval = useRef(null);
   const [millis, setMillis] = useState(minutesToMilli(minutes));
   const minutesLeft = Math.floor(millis / 1000 / 60) % 60;
@@ -21,6 +20,7 @@ export const Countdown = ({ minutes = 1, isPaused }) => {
       }
 
       const timeLeft = time - 1000;
+      onProgress(timeLeft / minutesToMilli(minutes));
       return timeLeft;
     });
   };
