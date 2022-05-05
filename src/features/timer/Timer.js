@@ -6,19 +6,30 @@ import { fontSizes, spacing } from "../../utils/sizes";
 import { colors } from "../../utils/colors";
 import { Countdown } from "../../components/Countdown";
 import { RoundedButton } from "../../components/RoundedButton";
+import { Timing } from "./Timing";
 
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const [minutes, setMinutes] = useState(12);
+
   const onProgress = (progress) => {
     setProgress(progress);
+  };
+
+  const changeTime = (min) => {
+    setMinutes(min);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
-        <Countdown isPaused={!isStarted} onProgress={onProgress} />
+        <Countdown
+          isPaused={!isStarted}
+          onProgress={onProgress}
+          minutes={minutes}
+        />
       </View>
       <View style={{ paddingTop: spacing.md }}>
         <Text style={styles.title}>Focusing on : </Text>
@@ -30,6 +41,9 @@ export const Timer = ({ focusSubject }) => {
           progress={progress}
           style={{ height: 20 }}
         />
+      </View>
+      <View style={styles.btnContainer}>
+        <Timing onChangeTime={changeTime} />
       </View>
       <View style={styles.btnContainer}>
         {isStarted ? (
@@ -74,6 +88,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flex: 0.3,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: spacing.md,

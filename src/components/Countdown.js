@@ -24,9 +24,12 @@ export const Countdown = ({ minutes = 1, isPaused, onProgress }) => {
       return timeLeft;
     });
   };
-
+  useEffect(() => {
+    setMillis(minutesToMilli(minutes));
+  }, [minutes]);
   useEffect(() => {
     if (isPaused) {
+      if (interval.current) clearInterval(interval.current);
       return;
     }
     interval.current = setInterval(countdown, 1000);
