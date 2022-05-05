@@ -5,11 +5,13 @@ export const RoundedButton = ({
   size = 125,
   style = {},
   textStyle = {},
-  ...props
+  focusItem,
+  title,
+  setFocus
 }) => {
   return (
-    <TouchableOpacity style={[styles(size).radius, style]} >
-      <Text style={[styles(size).text , textStyle]}>{props.title}</Text>
+    <TouchableOpacity style={[styles(size).radius, style]} onPress={()=>setFocus(focusItem)}  >
+      <Text style={[styles(size).text , textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -19,6 +21,7 @@ const styles = (size) => StyleSheet.create({
     borderRadius: size /2,
     width: size,
     height: size,
+    justifyContent: "center",
     alignItems: "center",
     borderColor : '#fff',
     borderWidth: 2,
