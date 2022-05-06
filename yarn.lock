@@ -2582,7 +2582,7 @@
   dependencies:
     "fontfaceobserver" "^2.1.0"
 
-"expo-keep-awake@~10.0.2":
+"expo-keep-awake@~10.0.1", "expo-keep-awake@~10.0.2":
   "integrity" "sha512-Ro1lgyKldbFs4mxhWM+goX9sg0S2SRR8FiJJeOvaRzf8xNhrZfWA00Zpr+/3ocCoWQ3eEL+X9UF4PXXHf0KoOg=="
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.0.2.tgz"
   "version" "10.0.2"
