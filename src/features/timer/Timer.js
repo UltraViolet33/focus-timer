@@ -10,9 +10,8 @@ import { Timing } from "./Timing";
 import { useKeepAwake } from "expo-keep-awake";
 
 const DEFAULT_TIME = 0.1;
-const ONE_SECOND_IN_MS = 1000;
 
-export const Timer = ({ focusSubject }) => {
+export const Timer = ({ focusSubject, onTimerEnd }) => {
   useKeepAwake();
 
   const [isStarted, setIsStarted] = useState(false);
@@ -32,7 +31,7 @@ export const Timer = ({ focusSubject }) => {
       const interval = setInterval(() => Vibration.vibrate(), 1000);
       setTimeout(() => clearInterval(interval), 1000);
     } else {
-      Vibration.vibrate(10 * ONE_SECOND_IN_MS);
+      Vibration.vibrate(2000);
     }
   };
 
@@ -42,6 +41,7 @@ export const Timer = ({ focusSubject }) => {
     setMinutes(DEFAULT_TIME);
     setProgress(1);
     setIsStarted(false);
+    onTimerEnd();
   };
 
   return (
