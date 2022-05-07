@@ -11,7 +11,7 @@ import { useKeepAwake } from "expo-keep-awake";
 
 const DEFAULT_TIME = 0.1;
 
-export const Timer = ({ focusSubject, onTimerEnd }) => {
+export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   useKeepAwake();
 
   const [isStarted, setIsStarted] = useState(false);
@@ -85,6 +85,10 @@ export const Timer = ({ focusSubject, onTimerEnd }) => {
           />
         )}
       </View>
+
+      <View style={styles.clearSubject}>
+        <RoundedButton title="-" size={60} onpress={clearSubject} />
+      </View>
     </View>
   );
 };
@@ -115,5 +119,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: spacing.md,
+  },
+  clearSubject: {
+    padding: spacing.md,
   },
 });
