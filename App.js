@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Focus } from "./src/features/focus/Focus";
 import { Timer } from "./src/features/timer/Timer";
 import { colors } from "./src/utils/colors";
@@ -32,6 +33,33 @@ export default function App() {
   const clearHistory = () => {
     setFocusHistory([]);
   };
+
+  const saveFocusHistory = async () => {
+    try {
+      await AsyncStorage.setItem("focusHistory", JSON.stringify(focusHistory));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const loadHistory = async () => {
+    try {
+      const history = await AsyncStorage.getItem("focusHistory");
+      if (history && JSON.parse(history).length) {
+        setFocusHistory(JSON.parse(history));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    loadHistory();
+  }, []);
+
+  useEffect(() => {
+    saveFocusHistory();
+  }, [focusHistory]);
 
   return (
     <View style={styles.container}>
