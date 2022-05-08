@@ -29,6 +29,10 @@ export default function App() {
     setFocusHistory([...focusHistory, { subject, status }]);
   };
 
+  const clearHistory = () => {
+    setFocusHistory([]);
+  };
+
   return (
     <View style={styles.container}>
       {focusSubject ? (
@@ -40,7 +44,7 @@ export default function App() {
       ) : (
         <>
           <Focus addSubject={setFocusSubject} />
-          <FocusHistory focusHistory={focusHistory} />
+          <FocusHistory focusHistory={focusHistory} onClear={clearHistory} />
         </>
       )}
     </View>
