@@ -1,13 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet, Vibration, Platform } from "react-native";
 import { useState } from "react";
+import { View, Text, StyleSheet, Vibration, Platform } from "react-native";
 import { ProgressBar } from "react-native-paper";
+import { useKeepAwake } from "expo-keep-awake";
+import { RoundedButton } from "../../components/RoundedButton";
+import { Countdown } from "../../components/Countdown";
+import { Timing } from "./Timing";
 import { fontSizes, spacing } from "../../utils/sizes";
 import { colors } from "../../utils/colors";
-import { Countdown } from "../../components/Countdown";
-import { RoundedButton } from "../../components/RoundedButton";
-import { Timing } from "./Timing";
-import { useKeepAwake } from "expo-keep-awake";
 
 const DEFAULT_TIME = 0.1;
 
@@ -36,7 +35,6 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   };
 
   const onEnd = () => {
-    console.log("tes");
     vibrate();
     setMinutes(DEFAULT_TIME);
     setProgress(1);
@@ -85,7 +83,6 @@ export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
           />
         )}
       </View>
-
       <View style={styles.clearSubject}>
         <RoundedButton title="-" size={60} onpress={clearSubject} />
       </View>

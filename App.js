@@ -3,9 +3,9 @@ import { StyleSheet, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Focus } from "./src/features/focus/Focus";
 import { Timer } from "./src/features/timer/Timer";
+import { FocusHistory } from "./src/features/focus/FocusHistory";
 import { colors } from "./src/utils/colors";
 import { spacing } from "./src/utils/sizes";
-import { FocusHistory } from "./src/features/focus/FocusHistory";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -27,7 +27,10 @@ export default function App() {
   };
 
   const addFocusHistory = (subject, status) => {
-    setFocusHistory([...focusHistory, { subject, status }]);
+    setFocusHistory([
+      ...focusHistory,
+      { key: String(focusHistory.length + 1), subject, status },
+    ]);
   };
 
   const clearHistory = () => {
@@ -70,10 +73,10 @@ export default function App() {
           clearSubject={clearSubject}
         />
       ) : (
-        <>
+        <View style={{ flex: 1 }}>
           <Focus addSubject={setFocusSubject} />
           <FocusHistory focusHistory={focusHistory} onClear={clearHistory} />
-        </>
+        </View>
       )}
     </View>
   );

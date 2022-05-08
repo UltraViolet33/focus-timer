@@ -16,15 +16,19 @@ export const Countdown = ({ minutes = 1, isPaused, onProgress, onEnd }) => {
     setMillis((time) => {
       if (time === 0) {
         clearInterval(interval.current);
-        onEnd();
         return time;
       }
-
       const timeLeft = time - 1000;
-      onProgress(timeLeft / minutesToMilli(minutes));
       return timeLeft;
     });
   };
+
+  useEffect(() => {
+    if (millis === 0) {
+      onEnd();
+    }
+    onProgress(millis / minutesToMilli(minutes));
+  }, [millis]);
 
   useEffect(() => {
     setMillis(minutesToMilli(minutes));
