@@ -5,24 +5,35 @@ import { Timer } from "./src/features/timer/Timer";
 import { colors } from "./src/utils/colors";
 import { spacing } from "./src/utils/sizes";
 
+const STATUSES = {
+  COMPLETE: 1,
+  CANCELLED: 2,
+};
+
 export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
   const [focusHistory, setFocusHistory] = useState([]);
 
-  useEffect(() => {
-    if (focusSubject) {
-      setFocusHistory([...focusHistory, focusSubject]);
-    }
-  }, [focusSubject]);
+  // useEffect(() => {
+  //   if (focusSubject) {
+  //     setFocusHistory([...focusHistory, focusSubject]);
+  //   }
+  // }, [focusSubject]);
 
   console.log(focusHistory);
 
   const onTimerEnd = () => {
+    addFocusHistory(focusSubject, STATUSES.COMPLETE);
     setFocusSubject(null);
   };
 
   const clearSubject = () => {
+    addFocusHistory(focusSubject, STATUSES.CANCELLED);
     setFocusSubject(null);
+  };
+
+  const addFocusHistory = (subject, status) => {
+    setFocusHistory([...focusHistory, { subject, status }]);
   };
 
   return (
