@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "android": {
-     
+      "package": "com.ulysse28.focustime"
     },
     "web": {
       "favicon": "./assets/favicon.png"
