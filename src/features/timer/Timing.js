@@ -16,18 +16,18 @@ export const Timing = ({ onChangeTime }) => {
       <View style={styles.timingButtons}>
         <RoundedButton
           size={75}
-          title="15"
+          title="25"
           onpress={() => {
-            onChangeTime(15);
+            onChangeTime(25);
           }}
         />
       </View>
       <View style={styles.timingButtons}>
         <RoundedButton
           size={75}
-          title="20"
+          title="45"
           onpress={() => {
-            onChangeTime(12);
+            onChangeTime(45);
           }}
         />
       </View>
