@@ -4,7 +4,7 @@
 
 
 <img align="left"  height="500" src="https://github.com/UltraViolet33/Focus-Timer-App/blob/master/assets/img_focus.jpeg">
-<img align="center"  height="500" src="https://github.com/UltraViolet33/Focus-Timer-App/blob/master/assets/img_focus_subject.jpeg">
+<img align=""  height="500" src="https://github.com/UltraViolet33/Focus-Timer-App/blob/master/assets/img_focus_subject.jpeg">
 
 
 
